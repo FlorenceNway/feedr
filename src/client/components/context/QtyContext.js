@@ -5,13 +5,13 @@ export const QtyContext = createContext();
 
 export const QtyProvider = (props) => {
     const [qty, setQty] = useState();
-    const [dietaries, setDietaries] = useState();
-    console.log('Context qty', qty)
+    const [prevItems, setPrevItems] = useState();
 
     const getPreviewItemsQty = async () => {
-        const response = await itemApi.getPreviewItems();
-        console.log(response)
-        setQty(response.length)
+        const previewItems = await itemApi.getPreviewItems();
+        console.log(previewItems)
+        setPrevItems(previewItems)
+        setQty(previewItems.length)
     }
 
     useEffect(() => {
@@ -19,7 +19,7 @@ export const QtyProvider = (props) => {
     }, [])
 
     return (
-        <QtyContext.Provider value={{qty, setQty}}>
+        <QtyContext.Provider value={{qty, setQty, prevItems, setPrevItems}}>
             {props.children}
         </QtyContext.Provider>);
 }

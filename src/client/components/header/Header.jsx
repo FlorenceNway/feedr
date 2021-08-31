@@ -3,7 +3,17 @@ import itemApi from '../../Api/item.api';
 import { QtyContext } from '../context/QtyContext';
 
 const Header = () => {
-    const { qty } = useContext(QtyContext)
+    const { qty, prevItems } = useContext(QtyContext);
+
+    const dietaries = ["gf", "df", "v", "ve", "n!", "rsf"]
+
+    const dietary = (type) => {
+        let count = 0;
+        prevItems?.forEach(item => item.dietaries.forEach(dietary => {
+            if (dietary === type) count++;
+        }))
+        return count;
+    }
     
     return (
         <div>
@@ -14,9 +24,12 @@ const Header = () => {
                     <span>{qty} items</span>
                 </div>
                 <div className="col-6 menu-summary-right">
-                    6x <span className="dietary">ve</span>
-                    4x <span className="dietary">v</span>
-                    12x <span className="dietary">n!</span>
+                    {
+                        dietaries.map(type => {
+                            let count = dietary(type);
+                           return count == 0 ? '' : <>{count}x <span className="dietary">{type}</span></>
+                        })
+                    }
                 </div>
                 </div>
             </div>

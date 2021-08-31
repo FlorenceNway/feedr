@@ -4,11 +4,12 @@ import { QtyContext } from '../context/QtyContext';
 
 const PreviewMenu = ({previewMenu, setPreviewMenu}) => {
     const [previewItems, setPreviewItems] = useState(previewMenu)
-    const {qty, setQty} = useContext(QtyContext)
+    const {setQty, setPrevItems} = useContext(QtyContext)
 
     useEffect(() => {
       setPreviewItems(previewMenu)
       setQty(previewMenu.length)
+      setPrevItems(previewMenu)
     }, [previewMenu])
 
     const deleteItem = async (id) => {
@@ -16,7 +17,8 @@ const PreviewMenu = ({previewMenu, setPreviewMenu}) => {
       if(res) {
         const updatedPreviewItems = previewItems.filter(item => item.id !== id);
         setPreviewMenu(updatedPreviewItems);
-        setQty(previewMenu.length)
+        setQty(previewMenu.length);
+        setPrevItems(previewMenu)
       }
     }
 
