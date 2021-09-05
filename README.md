@@ -1,16 +1,5 @@
-# Feedr Technical Challenge
+# Feedr
 
-Thank you for taking the time to attempt this challenge.
-
-These tests are used to evaluate candidates of all skill levels so please complete them to a level you feel is an accurate representation of your skill set.
-
-Please read `README-FRONTEND.md` for further instructions.
-
-
-Good luck!
-
-# Quick Start
-Fork the repository, clone it to your local system, then:
 
 ## Install dependencies
 yarn (or npm install)
