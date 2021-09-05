@@ -18,17 +18,16 @@ const SideMenu = ({items, previewItems}) => {
 
     const addPreviewMenu = async (id) => {
         const selected_item = items.find(item => id === item.id);
-        const addItems = [...previewMenu,selected_item]
         const response = await itemApi.postPreviewItems(selected_item);
         if(response) {
             setPreviewMenu([...previewMenu,response]);
-            setQty(previewMenu.length)
+            setQty(previewMenu.length);
         }
     }
 
     useEffect(()=> {
         const searchItems = items.filter(item => item.name.toLowerCase().match(searchItem.toLowerCase()));
-        setLocalItems(searchItems)
+        setLocalItems(searchItems);
     },[searchItem])
 
     return  (
