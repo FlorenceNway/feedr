@@ -1,5 +1,7 @@
 # Food Order
 
+Pre checking items App for ordering food
+
 for deploy with github hosting
 
 add in package.json
